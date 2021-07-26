@@ -1,12 +1,15 @@
 #!/bin/bash -x
 
-empcheck=$((RANDOM%2))
-if [ $empcheck -eq 1 ]
-then
-	emprateperhr=20
-	emphrs=8
-	wage=$(($emprateperhr*$emphrs))
-else
-	wage=0
-fi
+empcheck=$((RANDOM%3))
+emprateperhr=20
+	if [ $empcheck -eq 1 ]
+        then
+                emphrs=8
+        elif [ $empcheck -eq 2 ]
+        then
+                emphrs=4
+        else
+                emphrs=0
+        fi
+total=$(($emprateperhr*$emphrs))
 
