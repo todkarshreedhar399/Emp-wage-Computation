@@ -1,21 +1,27 @@
 #!/bin/bash -x
-sum=0
+
+workingDays=5
+maxhrs_month=10
+isfulltime=1
+isparttime=2
 emprateperhr=20
-for (( i=0 ;i<31;i++ ))
+totalemphrs=0
+totalworkingdays=0
+while [[ $totalemphrs -lt $maxhrs_month && $totalworkingdays -lt $workingDays ]]
 do
-empcheck=$((RANDOM%3))
-case $empcheck in
-        1)
-            emphrs=8
-        ;;
-        2)
-             emphrs=4
-        ;;
-        0)
-             emphrs=0
-        ;;
-esac
-total=$(($emprateperhr*$emphrs))
-sum=$[$sum+$total]
+        ((totalworkingdays++))
+        empcheck=$((RANDOM%3))
+        if [ $empcheck -eq $isfulltime ]
+        then
+                emphrs=8
+        elif [ $empcheck -eq $isparttime ]
+        then
+                emphrs=4
+        else
+                emphrs=0
+        fi
+ wage=$(($emphrs*$emprateperhr))
+        totalemphrs=$(($emphrs+$totalemphrs))
 done
-echo "Total Month Salary : $sum"
+ totalSalary=$(($emprateperhr*$totalemphrs))
+echo "Total Salary: $totalSalary"
