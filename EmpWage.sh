@@ -1,7 +1,9 @@
 #!/bin/bash -x
-
-empcheck=$((RANDOM%3))
+sum=0
 emprateperhr=20
+for (( i=0 ;i<31;i++ ))
+do
+empcheck=$((RANDOM%3))
 case $empcheck in
         1)
             emphrs=8
@@ -14,4 +16,6 @@ case $empcheck in
         ;;
 esac
 total=$(($emprateperhr*$emphrs))
-echo "Total Wage is : $total"
+sum=$[$sum+$total]
+done
+echo "Total Month Salary : $sum"
