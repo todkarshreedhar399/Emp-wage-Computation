@@ -2,14 +2,16 @@
 
 empcheck=$((RANDOM%3))
 emprateperhr=20
-	if [ $empcheck -eq 1 ]
-        then
-                emphrs=8
-        elif [ $empcheck -eq 2 ]
-        then
-                emphrs=4
-        else
-                emphrs=0
-        fi
+case $empcheck in
+        1)
+            emphrs=8
+        ;;
+        2)
+             emphrs=4
+        ;;
+        0)
+             emphrs=0
+        ;;
+esac
 total=$(($emprateperhr*$emphrs))
-
+echo "Total Wage is : $total"
