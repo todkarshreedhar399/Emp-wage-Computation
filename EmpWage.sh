@@ -16,7 +16,7 @@ case $empcheck in
         ;;
 esac
 total=$(($emprateperhr*$emphrs))
-echo "Day $i Wage is: $total"
+echo "Days Wage is: $total"
 sum=$[$sum+$total]
 done
 echo "Total Calculated Salary : $sum"
